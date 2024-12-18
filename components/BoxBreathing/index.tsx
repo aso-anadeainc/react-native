@@ -1,6 +1,6 @@
 import usePortraitOrientation from '@/hooks/useOrientation';
 import {  useEffect, useRef, useState } from 'react';
-import { View, Text, StyleSheet, Button, Animated } from 'react-native';
+import { View, Text, StyleSheet, Button, Animated, Platform } from 'react-native';
 
 const BoxBreathing: React.FC = () => {
 	const isPortrait = usePortraitOrientation();
@@ -74,7 +74,7 @@ const BoxBreathing: React.FC = () => {
 				/>
 			</View>
 			<View style={[styles.button, isAnimating && {opacity: 0.5}]}>
-				<Button title="Start" onPress={startAnimation} color="white" disabled={isAnimating}/>
+				<Button title="Start" onPress={startAnimation} color={Platform.OS ==='ios' ? 'white': 'lightgreen'} disabled={isAnimating}/>
 			</View>
 		</View>
 	);
